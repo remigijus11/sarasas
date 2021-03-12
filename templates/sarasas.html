@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+                    <h2>Transporto sąrašas <button type="button" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Naujas autovežis</button></h2>
+            <br />
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table id="sample_data" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Numeriai</th>
+                                    <th>Vairuotojas</th>
+                                    <th>Telefonas</th>
+                                    <th>Planuojamas reisas</th>
+                                    <th>Išvažiavimo data</th>
+                                    <th>Lokacija</th>
+                                    <th>Remonto stovis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in employee %}
+                                <tr>
+                                    <td data-pk="{{row.id}}">{{row.id}}</td>
+                                    <td data-name="numeriai" class="numeriai" data-type="text" data-pk="{{row.id}}">{{row.numeriai}}</td>
+                                    <td data-name="vairuotojas" class="vairuotojas" data-type="text" data-pk="{{row.id}}">{{row.vairuotojas}}</td>
+                                    <td data-name="tel_nr" class="tel_nr" data-type="text" data-pk="{{row.id}}">{{row.tel_nr}}</td>
+                                    <td data-name="planuojamas_reisas" class="planuojamas_reisas" data-type="text" data-pk="{{row.id}}">{{row.planuojamas_reisas}}</td>
+                                    <td align="center" style="background-color:#FF0000" data-name="isvaziavimo_data" class="isvaziavimo_data" data-type="date" data-pk="{{row.id}}">{{row.isvaziavimo_data}}</td>
+                                    <td style="background-color:#00FF00"data-name="lokacija" class="lokacija" data-type="text" data-pk="{{row.id}}">{{row.lokacija}}</td>
+                                    <td data-name="remonto_stovis" class="remonto_stovis" data-type="text" data-pk="{{row.id}}">{{row.remonto_stovis}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+<!-- Modal -->
+
+
+<div id="myModal" class="modal fade" role="dialog">
+
+
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            <h4 class="modal-title">Suveskite duomenis</h4>
+
+         </div>
+
+         <div class="modal-body">
+
+            <form action="{{ url_for('insert') }}" method="POST">
+
+               <div class="form-group">
+
+                  <label>Numeriai:</label>
+                  <input type="text" class="form-control" name="numeriai" required="1">
+
+               </div>
+
+
+                <div class="form-group">
+
+                  <label>vairuotojas:</label>
+                  <input type="text" class="form-control" name="vairuotojas" required="1">
+
+               </div>
+
+                <div class="form-group">
+
+                  <label>Telefono nr:</label>
+                  <input type="text" class="form-control" name="tel_nr" required="1">
+
+               </div>
+                <div class="form-group">
+
+                  <label>Planuojamas reisas:</label>
+                  <input type="text" class="form-control" name="planuojamas_reisas" required="1">
+
+               </div>
+                <div class="form-group">
+
+                  <label>Isvaziavimo data:</label>
+                  <input type="date" class="form-control" name="isvaziavimo_data" required="1">
+
+               </div>
+               <div class="form-group">
+
+                  <label>Lokacija</label>
+                  <input type="text" class="form-control" name="lokacija" required="1">
+
+               </div>
+                <div class="form-group">
+
+                  <label>Remonto stovis</label>
+                  <input type="text" class="form-control" name="remonto_stovis" required="1">
+
+               </div>
+
+               <div class="form-group">
+
+                  <button class="btn btn-primary" type="submit">Saugoti</button>
+
+               </div>
+
+            </form>
+
+
+         </div>
+
+         <div class="modal-footer">
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Uždaryti</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+
+
+</div>
+
+
+{% endblock %}

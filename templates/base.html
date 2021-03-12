@@ -1,0 +1,129 @@
+
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Transporto sąrašas</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+        <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap.min.css" />
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+    $('#sample_data').DataTable( {
+        "paging":   false,
+        "ordering": true,
+        "info":     false
+    } );
+} );
+    $(document).ready(function(){
+    var dataTable = $('#sample_data').DataTable();
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.vairuotojas',
+        url:'/updateemployee',
+        title:'Vairuotojas',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.tel_nr',
+        url:'/updateemployee',
+        title:'Telefono nr',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+     $('#sample_data').editable({
+        container:'body',
+        selector:'td.remonto_stovis',
+        url:'/updateemployee',
+        title:'Remonto stovis',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.planuojamas_reisas',
+        url:'/updateemployee',
+        title:'Planuojas reisas',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+        $('#sample_data').editable({
+        container:'body',
+        selector:'td.isvaziavimo_data',
+        url:'/updateemployee',
+        title:'Isvaziavimo data',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+         $('#sample_data').editable({
+        container:'body',
+        selector:'td.lokacija',
+        url:'/updateemployee',
+        title:'Lokacija',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+});
+</script>
+    </head>
+  <body>
+  <body>
+<header>
+
+</header>
+
+<main>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</main>
+
+
+</body>
+</html>
